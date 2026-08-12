@@ -45,7 +45,10 @@ if ($cmd -match 'git(\s+\S+)*?\s+add\b' -or $cmd -match '\scommit\s+[^;|&]*(-a\b
   }
 }
 
-$bad = @($lines | Where-Object { $_ -match '^\+' -and $_ -notmatch '^\+\+\+' -and $_ -match '\b(TODO|FIXME)\b' })
+# Markers only (introduced by a comment delimiter) — never prose *discussing* TODO/FIXME.
+# Measured false positive: the first pattern blocked committing an audit document whose
+# rule text mentioned the markers.
+$bad = @($lines | Where-Object { $_ -match '^\+' -and $_ -notmatch '^\+\+\+' -and $_ -match '(//|#|--|;|/\*|\*|<!--)\s*(TODO|FIXME)\b' })
 if ($bad.Count -gt 0) {
   [Console]::Error.WriteLine('BLOCKED (VibeGates R-13): this commit would introduce naked TODO/FIXME:')
   $bad | Select-Object -First 5 | ForEach-Object { [Console]::Error.WriteLine("  $_") }

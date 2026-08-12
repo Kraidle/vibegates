@@ -67,7 +67,8 @@ $("${G[@]}" ls-files --others --exclude-standard 2>/dev/null || true)
 EOF_UNTRACKED
 fi
 
-BAD="$(printf '%s\n' "$LINES" | grep -E '^\+' | grep -Ev '^\+\+\+' | grep -E '\b(TODO|FIXME)\b' || true)"
+# Markers only (introduced by a comment delimiter) — never prose *discussing* TODO/FIXME.
+BAD="$(printf '%s\n' "$LINES" | grep -E '^\+' | grep -Ev '^\+\+\+' | grep -E '(//|#|--|;|/\*|\*|<!--)[[:space:]]*(TODO|FIXME)\b' || true)"
 if [ -n "$BAD" ]; then
   echo "BLOCKED (VibeGates R-13): this commit would introduce naked TODO/FIXME:" >&2
   printf '%s\n' "$BAD" | head -5 >&2
