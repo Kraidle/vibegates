@@ -1,0 +1,41 @@
+# VibeGates applied to itself — docs-repo profile (see docs/04-adoption-profiles.md).
+# Every job is BLOCKING. No continue-on-error (framework invariant).
+# Scope, declared honestly: a documentation repository's mechanizable gates are
+# G5 (naked debt markers) and G6 (no copyrighted full texts committed). G2/P3
+# (review & understanding) remain human obligations made checkable via PRs.
+
+name: gates
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  g5-debt:
+    name: g5-no-naked-todo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Naked TODO/FIXME markers forbidden (R-13)
+        # Pattern targets actual markers (TODO:/FIXME:), not prose discussing them.
+        # The checker files (this workflow, the enforcement scripts) name the markers
+        # in their own block messages and are excluded from their own scan.
+        run: |
+          if git grep -nE '\b(TODO|FIXME):' -- ':!.github/workflows/gates.yml' ':!enforcement/'; then
+            echo '::error::Naked TODO/FIXME marker found. Handle via debt register + ADR, or resolve (R-13).'
+            exit 1
+          fi
+          echo "OK: no naked debt markers."
+
+  g6-compliance:
+    name: g6-no-copyrighted-pdfs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No PDFs / paywalled documents in the repository (CONTRIBUTING §6)
+        run: |
+          if git ls-files | grep -iE '\.pdf$'; then
+            echo '::error::PDF committed. Cite with DOI/links; never commit papers or standards.'
+            exit 1
+          fi
+          echo "OK: no committed PDFs."
