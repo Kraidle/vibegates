@@ -13,7 +13,7 @@
 ## Profile B — Claude Code
 
 - Instruction layer: put the `PROJECT-RULES.md` content in the repo's `CLAUDE.md`; add a pointer in `~/.claude/CLAUDE.md` to apply it across projects.
-- Machine layer: a `PreToolUse` hook on `Bash|PowerShell` runs [`enforcement/gate-commit.ps1`](../enforcement/gate-commit.ps1) (or the `.sh`) before any shell command executes — this blocks `git commit --no-verify` itself, which plain git hooks cannot. Example `~/.claude/settings.json` fragment:
+- Machine layer: a `PreToolUse` hook on `Bash|PowerShell` runs [`enforcement/gate-commit.ps1`](../enforcement/gate-commit.ps1) (or the `.sh`) before any shell command executes — this blocks `git commit --no-verify` itself, which plain git hooks cannot. **Windows/pwsh caveat (measured live)**: when the hook command runs through `pwsh -Command`, a bare `& 'script.ps1'` does not propagate the script's exit code — the blocking exit 2 silently degrades to a non-blocking 1 and the guard fires blanks. Append `; exit $LASTEXITCODE` to the hook command. Then prove the hook fires with a real blocked commit before trusting it — ours didn't on the first wiring, and only a live-fire test caught it. Example `~/.claude/settings.json` fragment:
 
 ```json
 {
