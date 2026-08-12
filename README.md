@@ -1,10 +1,11 @@
 # VibeGates
 
-**An evidence-based quality-gate framework for AI-assisted development.**
+**An evidence-based, machine-enforced quality-gate framework for AI-assisted development.**
 
-AI coding assistants are extraordinary generators and unreliable engineers. "Vibe coding" — accepting generated code without review, tests, or understanding — ships the gap between the two straight into your product. VibeGates is a set of **eight blocking gates, 25 rules, and a pass methodology** that price verification where it is cheapest, built so that **every rule traces back to a measured pathology in the peer-reviewed or primary literature**.
+AI coding assistants are extraordinary generators and unreliable engineers. "Vibe coding" — accepting generated code without review, tests, or understanding — ships the gap between the two straight into your product. VibeGates is a set of **eight blocking gates, 25 rules, and a pass methodology** that price verification where it is cheapest, built on two commitments most guidelines skip:
 
-This is not an opinion piece. It is a falsifiable standard: if a study contradicts one of the pathologies in our traceability matrix, the corresponding rule must be revised — see [Governance](#governance).
+1. **Every rule traces back to a measured pathology** in the peer-reviewed or primary literature (see the [traceability matrix](docs/02-framework.md#4-traceability-matrix)) — and a contradicting study forces a rule revision. Falsifiable, not dogmatic.
+2. **The rules are enforced by machinery, not by good intentions**: commit guards that physically reject the violating commit, blocking CI jobs with no `continue-on-error`, and required status checks on the branch. An instruction file is advice; VibeGates ships the mechanisms — because the human factor is itself a measured pathology (assisted developers are *more confident* while writing *less secure* code — ACM CCS 2023).
 
 ## The problem, in six primary-source numbers
 
@@ -33,6 +34,18 @@ This is not an opinion piece. It is a falsifiable standard: if a study contradic
 | **G7** | Verdict | A single accountable integrator reviews all gate evidence adversarially and alone commits |
 
 Gates are **non-discretionary**: no urgency, no "it's just a prototype" suspends one (a throwaway prototype lives in a marked branch and cannot be promoted without passing G0–G7 from scratch). Full rules R-1..R-25 and the pathology↔countermeasure traceability matrix: [docs/02-framework.md](docs/02-framework.md).
+
+## Enforced by machines, not vibes
+
+Three layers, by design (details: [adoption profiles](docs/04-adoption-profiles.md)):
+
+| Layer | What it does | Ships as |
+|---|---|---|
+| **Machine** — blocks | Rejects `git commit --no-verify` and commits introducing naked TODO/FIXME *before they execute*; CI jobs fail the PR on SAST findings, unjustified dependencies, license violations, committed PDFs; branch protection makes the checks required | [commit guards](enforcement/) (live-fire tested — see their headers for the exit-code trap we caught), [blocking CI](templates/ci-gates.yml) |
+| **Instruction** — steers | Puts the rules in front of every AI assistant session | [PROJECT-RULES.md](templates/PROJECT-RULES.md) for `CLAUDE.md` / `AGENTS.md` / `.cursorrules` |
+| **Process** — makes gaps visible | Review checklists, provenance log, pass reports, entry audits: what can't be automated becomes checkable and attributable | [templates](templates/) |
+
+Declared limit (we measure, we don't oversell): no tooling can enforce *understanding* (P3) or review quality — those remain human obligations made checkable, not automatic. What the machine layer guarantees is that skipping them leaves a visible, attributable trace instead of a silent pass. **This repository runs its own gates**: [blocking workflow](.github/workflows/gates.yml) + required checks on `main`.
 
 ## Quick start
 

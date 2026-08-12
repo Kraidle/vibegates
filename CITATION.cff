@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use or reference this framework, please cite it as below — and cite the underlying primary studies listed in docs/01-pathologies.md, which did the measuring."
-title: "VibeGates: an evidence-based quality-gate framework for AI-assisted development"
+title: "VibeGates: an evidence-based, machine-enforced quality-gate framework for AI-assisted development"
 type: software
 authors:
   - name: "Kraidle"
