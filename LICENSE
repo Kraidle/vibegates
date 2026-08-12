@@ -1,0 +1,11 @@
+VibeGates is dual-licensed:
+
+1. DOCUMENTATION — README.md and everything under docs/ — is licensed under the
+   Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
+   Full text: LICENSES/CC-BY-SA-4.0.txt and https://creativecommons.org/licenses/by-sa/4.0/
+
+2. CODE AND TEMPLATES — everything under templates/ and enforcement/ — is licensed
+   under the MIT License. Full text: LICENSES/MIT.txt
+
+By contributing to this repository you agree to license your contribution under the
+terms corresponding to the part of the repository it modifies (see CONTRIBUTING.md).

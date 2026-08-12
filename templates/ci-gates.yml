@@ -1,0 +1,45 @@
+# VibeGates CI template — gates G3/G4/G5/G6 (framework docs/02-framework.md)
+# Adapt tools per project (concrete choices fixed by sourced ADR, R-23).
+# Non-parameterizable invariant: every job is BLOCKING. No continue-on-error.
+
+name: vibegates
+on: [pull_request]
+
+jobs:
+  g3-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tests + branch coverage
+        run: '# <project test command> — fail below the ADR-set branch-coverage threshold'
+      - name: SAST (prioritize XSS & log injection — the worst measured model failures, Veracode 2025)
+        run: '# semgrep/codeql/equivalent — high severity = fail'
+      - name: Lockfile present and consistent
+        run: '# fail if lockfile missing or derived file uncommitted'
+      - name: New dependencies justified (anti-slopsquatting, R-8)
+        run: '# diff the lockfile: any new dependency must be listed in the PR with a registry check'
+
+  g4-architecture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fitness functions (dependency rules, no cycles)
+        run: '# dependency-cruiser/archunit/equivalent'
+      - name: New duplication
+        run: '# jscpd/equivalent — fail above the ADR-set threshold'
+
+  g5-debt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Naked TODO/FIXME forbidden (R-13)
+        run: '# blocking grep on TODO/FIXME outside the debt register'
+
+  g6-compliance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: SBOM
+        run: '# syft/cyclonedx — versioned artifact'
+      - name: License scan (R-16 — copyleft surprise)
+        run: '# fail on incompatible license match'

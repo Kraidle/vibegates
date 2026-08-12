@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use or reference this framework, please cite it as below — and cite the underlying primary studies listed in docs/01-pathologies.md, which did the measuring."
+title: "VibeGates: an evidence-based quality-gate framework for AI-assisted development"
+type: software
+authors:
+  - name: "Kraidle"
+repository-code: "https://github.com/Kraidle/vibegates"
+license: "CC-BY-SA-4.0 AND MIT"
+version: "1.0.0"
+date-released: "2026-08-12"
+keywords:
+  - vibe coding
+  - AI-assisted development
+  - quality gates
+  - technical debt
+  - software engineering
+  - code review
+  - supply chain security

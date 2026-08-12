@@ -1,0 +1,3 @@
+# Never commit acquired papers, standards, or any paywalled document (CONTRIBUTING §6)
+*.pdf
+procurement/
