@@ -27,7 +27,7 @@
 - D7 — R-8 four-layer registry-check script (item 4), published as an engineering spec with its FP/FN behaviour declared unmeasured until evaluated against the Churilov artifact (procurement 15); due Pass 3.
 - D8 — Verification-oracle upgrades: FAIL_TO_PASS witness (item 6), two-oracle G3 (item 7); due Pass 4. Safety monotonicity (item 8) stays P4-scheduled behind exploit-oracle availability, revisited at each pass open.
 - D9 — Headless AI-gate template + permission/sandbox template doctrine (items 11–12), including the empirical flag-combination test on a pinned CLI version **before** publication; due Pass 4.
-- D10 — **Dated regulatory checkpoint (CRA)**: the G6 template and the pass-report template carry the reporting-obligations date **2026-09-11** and the main-obligations date 2027-12-11; template edit due Pass 3 **before 2026-09-11**; the quotable legal wording remains gated on procurement 4.
+- D10 — **Dated regulatory checkpoint (CRA)**: the G6 template and the pass-report template carry the CRA application dates; template edit due **before 2026-09-11**. *(Pass-3 update: procurement 4 closed — OJ text read; the date list is now FOUR entries incl. Chapter IV 2026-06-11, and the reporting shorthand gains the ≤14-day/1-month final-report deadlines; see [pass-3-adjudications.md](pass-3-adjudications.md).)*
 
 **Formed procurement requests to the maintainer** (full bibliographic identity + attempts in the workers' gap records, `wf_d7c4b2d0-940`):
 1. DORA 2025 full PDF (services.google.com — exceeds the 10 MB fetch cap): the delivery-performance chapter; needed for 2025 magnitudes (direction only is published).

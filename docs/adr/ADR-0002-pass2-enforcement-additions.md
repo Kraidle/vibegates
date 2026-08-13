@@ -11,7 +11,7 @@
 The product's measured gap at Pass-2 open: 26 rules, 2 machine-enforced (naked-debt markers, `--no-verify`). Two rules are machine-checkable today with no new dependencies:
 
 1. **R-1/R-4 (pinned identifiers).** Founding incident, measured 2026-08-05: a bare tier `opus` in an agent definition silently resolved to a service variant of a different model than the one policy required — a bare tier resolves to whatever the platform decides at call time. A second occurrence was caught 2026-08-13 in another governed repo (Agent-tool tier enum). The failure mode is silent, recurrent, and textual — i.e., lintable.
-2. **R-25 (bounded batch size).** DORA 2024 (pp. 38–43) [read]: each +25 pts AI adoption associates with −7.2 % delivery stability; DORA's stated hypothesis is changelist inflation. The bound belongs at CI, where integration happens.
+2. **R-25 (bounded batch size).** DORA 2024 (pp. 39–40) [read]: "an estimated 7.2 % reduction" in delivery stability "for every 25 % increase in AI adoption" (relative); DORA's stated hypothesis is changelist inflation. The bound belongs at CI, where integration happens.
 
 ## Decision
 
@@ -22,7 +22,7 @@ The product's measured gap at Pass-2 open: 26 rules, 2 machine-enforced (naked-d
 
 ## Sources
 
-- DORA / Google Cloud, *Accelerate State of DevOps 2024*, pp. 38–43 [read] (R-25 basis; already in the 02 §4 matrix).
+- DORA / Google Cloud, *Accelerate State of DevOps 2024*, pp. 39–40 [read — page-verified 2026-08-13] (R-25 basis; already in the 02 §4 matrix).
 - Internal measurements: bare-tier resolution incidents 2026-08-05 and 2026-08-13 (documented in the maintainer's governance corpus and the Shogen G7 verdict of 2026-08-13).
 - Anthropic documentation on agent-definition frontmatter and settings files: mechanism grounding delegated to Pass-2 sweep worker A2. **Condition discharged 2026-08-13**: A2's [read] findings confirm the scanned locations — project `.claude/agents/` is scanned recursively by the platform (our `find`/`-Recurse` matches), skills live at `.claude/skills/<name>/SKILL.md`, `model:` frontmatter accepts full pinned IDs — and add the documented caveat that a frontmatter pin is outranked by `CLAUDE_CODE_SUBAGENT_MODEL` and the per-call parameter, which is why the linter complements and never replaces the first-launch resolution control (R-1).
 
