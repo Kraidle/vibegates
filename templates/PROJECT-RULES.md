@@ -4,7 +4,7 @@ Place this content in your assistant's instruction file: `CLAUDE.md`, `AGENTS.md
 `.cursorrules`, or `.github/copilot-instructions.md`. Framework: https://github.com/Kraidle/vibegates
 
 ## Quality framework (mandatory, non-discretionary)
-This repository is governed by VibeGates: **blocking gates G0–G7** and rules R-1..R-25.
+This repository is governed by VibeGates: **blocking gates G0–G7** and rules R-1..R-26.
 
 Operational consequences in this repository:
 1. No code without an attached spec/ADR (G0). ADRs in `docs/adr/` (framework template).
@@ -19,3 +19,7 @@ Operational consequences in this repository:
 7. Pinned model identifiers; generator ≠ reviewer ≠ integrator where possible;
    only the accountable integrator commits (R-19/R-20).
 8. Existing project? `docs/entry-audit.md` is due at the next work pass (R-24).
+9. An agent that is blocked, has failed twice on the same approach, or must choose between
+   competing solutions does not improvise a workaround — it files a formed consultation
+   request, routed by the integrator to a designated read-only advisor; the advice is
+   counsel, the verdict stays with the integrator (R-26).

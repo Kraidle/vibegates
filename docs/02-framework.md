@@ -1,6 +1,6 @@
 # The VibeGates Framework — principles, gates, rules
 
-**Status**: v1.0 (English edition, 2026-08-12).
+**Status**: v1.1 (English edition, 2026-08-13 — adds R-26, consultation before improvisation, traced in §4; v1.0: 2026-08-12).
 **Nature**: enforceable. A red gate blocks; there is no "exceptional" passage. Thresholds are per-project parameters set by sourced ADR, but their **existence** and **blocking character** are not parameters.
 Every countermeasure below traces to a pathology in [01-pathologies.md](01-pathologies.md); the matrix in §4 keeps that honest.
 
@@ -71,7 +71,7 @@ Counters: material disengagement (01 §7) — responsibility has a name at every
 
 **Compliance** — R-16: blocking license scan in CI. R-17: regulatory deadlines are project milestones. R-18: distributed products plan ≥5-year security-update capability where applicable.
 
-**Organization** — R-19: pinned models for all agents; roles separated (generator / reviewer / integrator). R-20: only the integrator commits and triggers pipelines. R-21: every agent output is adversarially checked before consumption. R-22: gates are non-discretionary — no urgency, no "prototype" suspends one; a throwaway prototype lives in a marked branch and **cannot be promoted** without passing G0–G7 from scratch. R-23: per-project thresholds are set by sourced ADR; an unsourced threshold is a defect (P1). R-24: the framework applies to new projects from the first commit and to existing projects via an [entry audit](../templates/entry-audit.md) at their next work pass. R-25: **bounded batch size** — small, single-topic PRs; AI inflates changelists and large changes degrade delivery stability (−7.2 % per +25 pts adoption [DORA 2024]); the numeric bound is a project ADR parameter.
+**Organization** — R-19: pinned models for all agents; roles separated (generator / reviewer / integrator). R-20: only the integrator commits and triggers pipelines. R-21: every agent output is adversarially checked before consumption. R-22: gates are non-discretionary — no urgency, no "prototype" suspends one; a throwaway prototype lives in a marked branch and **cannot be promoted** without passing G0–G7 from scratch. R-23: per-project thresholds are set by sourced ADR; an unsourced threshold is a defect (P1). R-24: the framework applies to new projects from the first commit and to existing projects via an [entry audit](../templates/entry-audit.md) at their next work pass. R-25: **bounded batch size** — small, single-topic PRs; AI inflates changelists and large changes degrade delivery stability (−7.2 % per +25 pts adoption [DORA 2024]); the numeric bound is a project ADR parameter. R-26: **consultation before improvisation** — an agent that is blocked, has failed twice on the same approach, or faces a choice between competing solutions consults a designated read-only advisor (routed through the integrator) instead of improvising a workaround; the advice is counsel, never a verdict — adversarial verification (R-21) and the final verdict stay with the integrator, and the advisor never commits (R-20). An improvised workaround is the agentic variant of vibe coding: miscalibrated confidence [Perry 2023] acting without a validation layer [CodeScene 2024].
 
 ---
 
@@ -80,7 +80,7 @@ Counters: material disengagement (01 §7) — responsibility has a name at every
 | Pathology (01) | Key evidence | Gates | Rules |
 |---|---|---|---|
 | Stationary output insecurity (§2.1) | Pearce 2022; Veracode 2025 | G2, G3 | R-5, R-7 |
-| Assisted degradation + overconfidence (§2.2, §7) | Perry 2023 | G2, G7 | R-5, R-6 |
+| Assisted degradation + overconfidence (§2.2, §7) | Perry 2023 | G2, G7 | R-5, R-6, R-26 |
 | Unsafe AI refactoring (§2.3) | CodeScene 2024 | G2, G3 | R-7 |
 | Issue survival in the wild (§2.4) | Debt-Boom 2026 [preprint] | G3, G5 | R-13, R-15 |
 | Duplication, refactoring collapse (§3.2) | GitClear 2025–2026 | G4 | R-3, R-15 |

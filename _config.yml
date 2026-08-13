@@ -1,5 +1,5 @@
 title: VibeGates
-description: An evidence-based, machine-enforced quality-gate framework for AI-assisted development. Eight blocking gates, 25 rules — every rule traced to a primary-source pathology, enforced by commit guards and blocking CI. Falsifiable by construction.
+description: An evidence-based, machine-enforced quality-gate framework for AI-assisted development. Eight blocking gates, 26 rules — every rule traced to a primary-source pathology, enforced by commit guards and blocking CI. Falsifiable by construction.
 theme: jekyll-theme-cayman
 markdown: kramdown
 exclude:

@@ -2,7 +2,7 @@
 
 **An evidence-based, machine-enforced quality-gate framework for AI-assisted development.**
 
-AI coding assistants are extraordinary generators and unreliable engineers. "Vibe coding" — accepting generated code without review, tests, or understanding — ships the gap between the two straight into your product. VibeGates is a set of **eight blocking gates, 25 rules, and a pass methodology** that price verification where it is cheapest, built on two commitments most guidelines skip:
+AI coding assistants are extraordinary generators and unreliable engineers. "Vibe coding" — accepting generated code without review, tests, or understanding — ships the gap between the two straight into your product. VibeGates is a set of **eight blocking gates, 26 rules, and a pass methodology** that price verification where it is cheapest, built on two commitments most guidelines skip:
 
 1. **Every rule traces back to a measured pathology** in the peer-reviewed or primary literature (see the [traceability matrix](docs/02-framework.md#4-traceability-matrix)) — and a contradicting study forces a rule revision. Falsifiable, not dogmatic.
 2. **The rules are enforced by machinery, not by good intentions**: commit guards that physically reject the violating commit, blocking CI jobs with no `continue-on-error`, and required status checks on the branch. An instruction file is advice; VibeGates ships the mechanisms — because the human factor is itself a measured pathology (assisted developers are *more confident* while writing *less secure* code — ACM CCS 2023).
@@ -33,7 +33,7 @@ AI coding assistants are extraordinary generators and unreliable engineers. "Vib
 | **G6** | Compliance | SBOM, license scan, security-update capability, regulatory checklists (e.g. EU CRA/AI Act where applicable) |
 | **G7** | Verdict | A single accountable integrator reviews all gate evidence adversarially and alone commits |
 
-Gates are **non-discretionary**: no urgency, no "it's just a prototype" suspends one (a throwaway prototype lives in a marked branch and cannot be promoted without passing G0–G7 from scratch). Full rules R-1..R-25 and the pathology↔countermeasure traceability matrix: [docs/02-framework.md](docs/02-framework.md).
+Gates are **non-discretionary**: no urgency, no "it's just a prototype" suspends one (a throwaway prototype lives in a marked branch and cannot be promoted without passing G0–G7 from scratch). Full rules R-1..R-26 and the pathology↔countermeasure traceability matrix: [docs/02-framework.md](docs/02-framework.md).
 
 ## Enforced by machines, not vibes
 
