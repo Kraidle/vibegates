@@ -1,0 +1,31 @@
+# VibeGates R-8 — popular-name FLOOR for L2 proximity checks, npm (ADR-0006).
+# Same role and thresholds as popular-pypi.txt (ConfuGuard deployed
+# parameters). Deterministic floor, ADR-extensible, per-pass refresh duty.
+lodash
+react
+react-dom
+express
+axios
+chalk
+commander
+debug
+tslib
+typescript
+webpack
+vite
+next
+vue
+moment
+dayjs
+uuid
+dotenv
+zod
+eslint
+prettier
+jest
+mocha
+rxjs
+redux
+ember-source
+ember-cli
+@types/node

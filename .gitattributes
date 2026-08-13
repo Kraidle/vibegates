@@ -1,0 +1,6 @@
+# VibeGates — line-ending discipline (U3 G2 finding: CRLF data files break
+# L2/L4 on ubuntu-latest runners; pin LF for everything executable/parsed).
+* text=auto
+*.sh text eol=lf
+*.yml text eol=lf
+enforcement/data/** text eol=lf

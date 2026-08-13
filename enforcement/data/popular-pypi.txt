@@ -1,0 +1,41 @@
+# VibeGates R-8 — popular-name FLOOR for L2 proximity checks, PyPI (ADR-0006).
+# Role: the "more popular package" anchor set for Levenshtein ≤ 2 detection
+# (ConfuGuard deployed thresholds: distance ≤ 2 covers 77.7 % of real
+# typosquat pairs, median 1; popularity floor 5 000 weekly downloads, ≥ 10×
+# ratio [read]). This bundled list is a deterministic FLOOR, not a census —
+# projects extend it by ADR; refresh duty per pass. Names: long-standing
+# top-download PyPI packages (identity-level facts; no figures claimed).
+requests
+urllib3
+numpy
+pandas
+boto3
+botocore
+setuptools
+certifi
+idna
+charset-normalizer
+typing-extensions
+python-dateutil
+six
+packaging
+pip
+cryptography
+pyyaml
+click
+jinja2
+markupsafe
+attrs
+flask
+django
+sqlalchemy
+pytest
+scipy
+matplotlib
+pillow
+aws-cdk-lib
+pyobjc
+opentelemetry-api
+djangorestframework
+tencentcloud-sdk-python
+pyopengl

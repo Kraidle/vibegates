@@ -15,6 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Full-lockfile registry recheck (R-8, scheduled)
-        run: '# re-run the registry+metadata check (enforcement R-8 script, Pass-4 U3) over the ENTIRE lockfile, not the diff; a newly flagged existing dependency is a blocking finding on the next merge'
+        run: '# loop enforcement/check-dependency.sh over EVERY lockfile name, not the diff (ADR-0006); a newly flagged existing dependency is a blocking finding on the next merge'
+      - name: R-8 network acceptance set (scheduled here, never merge-blocking — ADR-0006 §7)
+        run: bash enforcement/tests/run-fixtures-r8.sh
       - name: Secret scan over the tree (drift catch)
         run: bash enforcement/gate-secrets.sh --tree

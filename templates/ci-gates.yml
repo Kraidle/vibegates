@@ -54,7 +54,7 @@ jobs:
       - name: Lockfile present and consistent
         run: '# fail if lockfile missing or derived file uncommitted'
       - name: New dependencies justified (anti-slopsquatting, R-8)
-        run: '# diff the lockfile: any new dependency must be listed in the PR with a registry check'
+        run: '# diff the lockfile: every NEW name goes through enforcement/check-dependency.sh <pypi|npm> <name> (four layers, ADR-0006) and is listed in the PR with the result'
       - name: Secret scan — dedicated tool (G3 backstop of the pre-commit regex floor)
         run: '# gitleaks/trufflehog class — the enforcement/gate-secrets.sh guard is a floor, not the scanner'
       - name: Secret scan — guard floor (blocks credential-shaped content)

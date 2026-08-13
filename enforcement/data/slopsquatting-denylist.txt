@@ -1,0 +1,19 @@
+# VibeGates R-8 — universal-hallucination denylist (ADR-0006).
+# Provenance: the 10 publicly disclosed names from the 127-name model-agnostic
+# universal-hallucination set (all five 2026 frontier models invent them
+# identically) — Churilov 2026, arXiv:2605.17062 [read, pass-3 register],
+# Table 4 public entries. The remaining 117 names are access-restricted
+# (Zenodo 10.5281/zenodo.19859120, verified-researcher policy) — formed
+# procurement request 15, open. A name listed here BLOCKS even if it now
+# resolves on the registry: registrability after disclosure is the attack.
+# Format: <ecosystem> <name>
+pypi aws-cdk
+pypi objc
+pypi opentelemetry
+pypi rest-framework
+pypi tencentcloud
+pypi mpl-toolkits
+pypi opengl
+pypi openstack
+npm @ember/service
+npm @ember/object
