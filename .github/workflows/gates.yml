@@ -1,7 +1,10 @@
 # VibeGates applied to itself — docs-repo profile (see docs/04-adoption-profiles.md).
 # Every job is BLOCKING. No continue-on-error (framework invariant).
-# Scope, declared honestly: a documentation repository's mechanizable gates are
-# G5 (naked debt markers) and G6 (no copyrighted full texts committed). G2/P3
+# Scope, declared honestly: this documentation repository mechanizes G1 (model
+# pinning over the .claude/ pack), G3 (credential floor), G5 (naked debt
+# markers) and G6 (no copyrighted full texts). gate-gist is deliberately NOT
+# wired here (docs repo: markdown is out of the guard's declared scope) while
+# adopters get it in templates/ci-gates.yml g5 — asymmetry recorded. G2/P3
 # (review & understanding) remain human obligations made checkable via PRs.
 
 name: gates
@@ -23,6 +26,20 @@ jobs:
         # caught and reproduced 2 real defects between rounds (exception-boundary
         # fail-open; whole-file scan); both fixed and re-proven. See docs/passes/pass-2-report.md.
         run: bash enforcement/lint-model-pinning.sh .
+  g3-secrets:
+    name: g3-no-credentials
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Credential-shaped content forbidden (regex floor; live-fire evidence in docs/passes/pass-4-report.md)
+        run: bash enforcement/gate-secrets.sh --tree
+  guards-selftest:
+    name: guards-acceptance-set
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Run the committed guard acceptance set (the contract, executable — 39 fixtures)
+        run: bash enforcement/tests/run-fixtures.sh
   g5-debt:
     name: g5-no-naked-todo
     runs-on: ubuntu-latest

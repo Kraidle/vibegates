@@ -15,7 +15,7 @@
 | G3 automated verification | ☐ | CI + justified dependencies |
 | G4 architecture metrics | ☐ | duplication / churn / refactor ratio recorded |
 | G5 debt | ☐ | section 3 below |
-| G6 compliance | ☐ | SBOM, licenses, regulatory deadlines |
+| G6 compliance | ☐ | SBOM, licenses, regulatory deadlines — **EU CRA (Reg. 2024/2847, OJ-verified)**: Chapter IV applies **2026-06-11**; Art. 14 manufacturer reporting **2026-09-11** (early warning 24 h · notification 72 h · final report ≤ 14 days for vulnerabilities / ≤ 1 month for incidents); main body **2027-12-11**. Watch: ENISA Single Reporting Platform not live per source dated 2026-06-29 — re-check each pass until live |
 | G7 verdict | ☐ | integrator's written verdict referenced |
 
 ## 3. Zero-naked-debt close (mandatory — a naked owed item = pass not closed)
