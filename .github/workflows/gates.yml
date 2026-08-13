@@ -11,6 +11,18 @@ on:
   pull_request:
 
 jobs:
+  g1-model-pinning:
+    name: g1-pinned-models
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pinned model identifiers only (R-1/R-4, ADR-0002)
+        # Guards the .claude/ agent & skill pack: a bare tier resolves to whatever
+        # the platform decides at call time (measured 2026-08-05). Live-fire tested
+        # 2026-08-13 across three rounds (23 fixture runs, both ports) — the G2 review
+        # caught and reproduced 2 real defects between rounds (exception-boundary
+        # fail-open; whole-file scan); both fixed and re-proven. See docs/passes/pass-2-report.md.
+        run: bash enforcement/lint-model-pinning.sh .
   g5-debt:
     name: g5-no-naked-todo
     runs-on: ubuntu-latest

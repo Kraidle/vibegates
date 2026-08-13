@@ -6,6 +6,43 @@ name: vibegates
 on: [pull_request]
 
 jobs:
+  g1-generation-control:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pinned model identifiers only (R-1/R-4, ADR-0002 — bare tiers resolve platform-side)
+        run: bash enforcement/lint-model-pinning.sh .  # ships with the framework's enforcement/ directory
+
+  r25-batch-size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Bounded batch size (R-25 — DORA 2024 pp. 38–43, batch inflation degrades delivery)
+        env:
+          VIBEGATES_PR_LIMIT: ''  # set from your project's sourced ADR (R-23). Fail-closed: empty fails.
+        run: |
+          case "$VIBEGATES_PR_LIMIT" in
+            ''|*[!0-9]*)
+              echo '::error::R-25 not configured: set VIBEGATES_PR_LIMIT to a number sourced from a project ADR (R-23). A hardcoded default would be a naked number — fail-closed until sourced.'
+              exit 1 ;;
+          esac
+          # fetch-depth: 0 above already provides full history for the base ref; a
+          # --depth=1 fetch here would SHALLOW the base and silently break the diff
+          # (measured during this template's own G2 review: the three-dot diff dies,
+          # awk prints 0, and the gate passes everything — fail-open).
+          NUMSTAT=$(git diff --numstat "origin/${{ github.base_ref }}...HEAD" -- . ':(exclude)*.lock' ':(exclude)package-lock.json') || {
+            echo '::error::R-25 gate could not compute the diff (no merge base?). Failing closed.'
+            exit 1
+          }
+          CHANGED=$(printf '%s\n' "$NUMSTAT" | awk '{s+=$1+$2} END {print s+0}')
+          echo "Changed lines: $CHANGED (ADR-set limit: $VIBEGATES_PR_LIMIT)"
+          if [ "$CHANGED" -gt "$VIBEGATES_PR_LIMIT" ]; then
+            echo "::error::BLOCKED (VibeGates R-25): $CHANGED changed lines exceed the ADR-set limit of $VIBEGATES_PR_LIMIT. Split the PR."
+            exit 1
+          fi
+
   g3-verification:
     runs-on: ubuntu-latest
     steps:
