@@ -95,7 +95,7 @@ A vibe-coded product has no ADRs [Nygard 2011] [read], no threat model, no archi
 
 - **Churn** (code rewritten <2 weeks after commit): **+15 %** in 2026 YTD vs the 2023–2026 window [GitClear 2026] [read] [grey]. Churn is discarded work — correction-debt paid immediately, in growing volume.
 - **Defect survival**: 22.7 % of AI-introduced issues persist to latest version (§2.4) [Debt-Boom 2026] [preprint] — a direct measure of unpaid debt.
-- **[preprint] [abs]** Across 477 repositories (159 LLM / 159 ML / 159 non-ML), LLM projects accumulate self-admitted technical debt at ML-like rates (3.95 % vs 4.10 %) but stay debt-free **2.4× longer** (median 492 vs 204 days) before rapid accumulation — a "delayed but persistent" pattern, with three LLM-specific debt categories identified [SATD-LLM 2026].
+- **[abs]** (SANER 2026, venue confirmed 2026-08-13) Across 477 repositories (159 LLM / 159 ML / 159 non-ML), LLM projects accumulate self-admitted technical debt at ML-like rates (3.95 % vs 4.10 %) but stay debt-free **2.4× longer** (median 492 vs 204 days) before rapid accumulation — a "delayed but persistent" pattern, with three LLM-specific debt categories identified [SATD-LLM 2026].
 
 ### 4.2 The nature of vibe-coded debt: never contracted, so never repayable
 
@@ -199,7 +199,7 @@ Grey **[grey]** and preprints **[preprint]**:
 - **[GitClear 2026]** [read] *The Maintainability Gap: 2026 AI Code Quality Research.* [link](https://www.gitclear.com/the_ai_code_quality_maintainability_gap)
 - **[CodeScene 2024]** [read] Tornhill, Borg, Mones. *Refactoring vs. Refuctoring.* COI: code-health vendor. [research index](https://codescene.com/resources/research-and-insights)
 - **[DORA 2024]** [read pp. 38–43, page-verified on the authentic report 2026-08-13 — the delivery figures specifically sit at pp. 39–40 (Figure 10 + p. 40); p. 38 carries the process gains and pp. 41–43 the org/team/product outcomes] *Accelerate State of DevOps Report 2024* (v. 2024.3). COI: Google (runs against the negative finding reported). [PDF](https://dora.dev/research/2024/dora-report/2024-dora-accelerate-state-of-devops-report.pdf)
-- **[SATD-LLM 2026]** [abs] [preprint] Selvanayagam, Ghaleb, Abdellatif. *Self-Admitted Technical Debt in LLM Software.* [arXiv:2601.06266](https://arxiv.org/abs/2601.06266)
+- **[SATD-LLM 2026]** [abs] Selvanayagam, Ghaleb, Abdellatif. *Self-Admitted Technical Debt in LLM Software.* SANER 2026 (venue confirmed 2026-08-13; reading remains at abstract level — listed under this heading for its [abs] reading level, no longer for venue status). [arXiv:2601.06266](https://arxiv.org/abs/2601.06266)
 - **[Debt-Boom 2026]** [abs] [preprint] *Debt Behind the AI Boom: A Large-Scale Empirical Study of AI-Generated Code in the Wild.* [arXiv:2603.28592](https://arxiv.org/abs/2603.28592)
 
 Legal / regulatory:
