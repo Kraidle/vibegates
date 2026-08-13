@@ -23,6 +23,7 @@ Basis: unchecklisted review drifts away from defect detection [Bacchelli 2013, r
 ## Structure (G4)
 - [ ] No duplication of existing code the generator didn't know about (R-3); if duplicated: refactor before merge.
 - [ ] Batch size conforms (R-25): one topic per PR; otherwise split.
+- [ ] Any diff to `.vibegates-secretscan-exclude` read against the ADR it names (the guard treats the ADR token as attribution only — the reviewer validates the reference; round-5 proposal, ADR-0004).
 
 ## Traceability
 - [ ] Provenance entry filled (provenance log).

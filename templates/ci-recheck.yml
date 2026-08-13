@@ -1,0 +1,20 @@
+# VibeGates scheduled re-verification — supply-chain gates do not stop at install time.
+# Basis [read, pass-2 register, backlog item 5]: 13.3 % of confirmed npm
+# package-confusion attacks injected malware >= 5 days AFTER release [ConfuGuard].
+# A dependency that passed the gate on day 0 can be malicious on day 7 — hence a
+# scheduled full-lockfile recheck, blocking on any newly flagged existing dependency.
+name: vibegates-recheck
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # weekly per the register (backlog item 5); the measured >=5-day stealth floor makes a tighter cadence defensible — set yours by ADR (R-23)
+  workflow_dispatch:
+
+jobs:
+  r8-lockfile-recheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Full-lockfile registry recheck (R-8, scheduled)
+        run: '# re-run the registry+metadata check (enforcement R-8 script, Pass-4 U3) over the ENTIRE lockfile, not the diff; a newly flagged existing dependency is a blocking finding on the next merge'
+      - name: Secret scan over the tree (drift catch)
+        run: bash enforcement/gate-secrets.sh --tree
