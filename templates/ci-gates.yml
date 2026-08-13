@@ -9,14 +9,14 @@ jobs:
   g1-generation-control:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Pinned model identifiers only (R-1/R-4, ADR-0002 — bare tiers resolve platform-side)
         run: bash enforcement/lint-model-pinning.sh .  # ships with the framework's enforcement/ directory
 
   r25-batch-size:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Bounded batch size (R-25 — DORA 2024 pp. 39–40, batch inflation degrades delivery)
@@ -46,7 +46,7 @@ jobs:
   g3-verification:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Tests + branch coverage
         run: '# <project test command> — fail below the ADR-set branch-coverage threshold'
       - name: SAST (prioritize XSS & log injection — the worst measured model failures, Veracode 2025)
@@ -59,7 +59,7 @@ jobs:
   g4-architecture:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Fitness functions (dependency rules, no cycles)
         run: '# dependency-cruiser/archunit/equivalent'
       - name: New duplication
@@ -68,14 +68,14 @@ jobs:
   g5-debt:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Naked TODO/FIXME forbidden (R-13)
         run: '# blocking grep on TODO/FIXME outside the debt register'
 
   g6-compliance:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: SBOM
         run: '# syft/cyclonedx — versioned artifact'
       - name: License scan (R-16 — copyleft surprise)

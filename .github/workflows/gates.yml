@@ -15,7 +15,7 @@ jobs:
     name: g1-pinned-models
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Pinned model identifiers only (R-1/R-4, ADR-0002)
         # Guards the .claude/ agent & skill pack: a bare tier resolves to whatever
         # the platform decides at call time (measured 2026-08-05). Live-fire tested
@@ -27,7 +27,7 @@ jobs:
     name: g5-no-naked-todo
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Naked TODO/FIXME markers forbidden (R-13)
         # Pattern targets actual markers (TODO:/FIXME:), not prose discussing them.
         # The checker files (this workflow, the enforcement scripts) name the markers
@@ -43,7 +43,7 @@ jobs:
     name: g6-no-copyrighted-pdfs
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: No PDFs / paywalled documents in the repository (CONTRIBUTING §6)
         run: |
           if git ls-files | grep -iE '\.pdf$'; then
