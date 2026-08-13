@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Bounded batch size (R-25 — DORA 2024 pp. 38–43, batch inflation degrades delivery)
+      - name: Bounded batch size (R-25 — DORA 2024 pp. 39–40, batch inflation degrades delivery)
         env:
           VIBEGATES_PR_LIMIT: ''  # set from your project's sourced ADR (R-23). Fail-closed: empty fails.
         run: |
