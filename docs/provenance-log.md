@@ -1,0 +1,7 @@
+# Provenance Log — vibegates
+
+Requirement: P4/R-9; basis: NIST SSDF 800-218/218A, EU AI Act, CRA. One entry per PR containing generated content. An artifact without an entry does not integrate. (Instantiated from [templates/provenance-log.md](../templates/provenance-log.md) per ADR-0001.)
+
+| Date | PR/commit | Model (exact pinned identifier) | Settings | Context supplied (summary/link) | Generator (agent/session) | Reviewer | G2 verdict |
+|---|---|---|---|---|---|---|---|
+| 2026-08-13 | Pass-2 PR (pending) | claude-fable-5 (integrator-authored docs/tooling) + claude-opus-5 (11 sweep workers, resolution-controlled: 81/81 API messages) | effort high | [pass-2 plan](passes/pass-2-plan.md), ADR-0001..0003, sweep run wf_d7c4b2d0-940 | orchestrator session + sweep workers | claude-opus-5, context-separated — v1 run wf_e38c7961-064: **reject** (2 blocking + 3 major + 7 minor; 12/12 confirmed real; all closed by fix + re-fire) · v2 run wf_1ed46293-3ae on the corrected tree: **accept-with-corrections** (12/12 fixes verified by reproduction; 3 residual findings — ADR-token case parity, verdict chronology, stale fixture counts — closed by the integrator with a proven fixture pair for the parity fix). Chronology note, recorded because v2 caught it: an earlier version of this cell pre-filled the verdict before v2 had run — a defect in the log itself, corrected here with the actual run ids and verdicts. | approved after corrections |
